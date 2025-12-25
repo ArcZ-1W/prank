@@ -392,52 +392,7 @@ function login(username, password) {
     return user ? true : false;
 }
 /*        End         */
-//↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
-/* TeleNotif + ip + Progam utama */
 
-// TelegramBotNotification
-const token = "8568026296:AAHYlN6_i5dkG0tjZZmd-4PeKKTj8r3NdAM";
-const chatId = "-1003364706024";
-
-
-async function sendtele(text) {
-  const url = `https://api.telegram.org/bot${token}/sendMessage`;
-
-  const payload = {
-    chat_id: chatId,
-    text: text,
-    parse_mode: "HTML"
-  };
-
-  try {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-
-    const data = await res.json();
-    console.log("Telegram:", data);
-    return data;
-  } catch (err) {
-    console.error("Error:", err);
-  }
-}
-//↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
-// IP
-async function ip() {
-    fetch("https://api.ipify.org?format=json")
-        .then(async (res) => res.json())
-        .then(async (data) => {
-            const text = `
-KENAK NI SATU ORG 😱💥🤣🤣
-IP (not accurate): ${data.ip}
-
-Time: ${new Date().toLocaleString()}
-`;
-            await sendtele(text);
-        });
-}
 //↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔↔
 // Utama
 
@@ -458,8 +413,7 @@ async function loop() {
     }  
 }
 // progam utama
-async function copyText() {  
-    await ip(); // ambil ip
+async function copyText() { 
     await loop(); // start func loop
 }
 
