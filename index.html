@@ -424,7 +424,7 @@ async function loginNow() {
     if (login(user, pass)) {
         await LoadScreen();
         showNotif("Login sukses!", "success");
-        copyText()
+        loop()
     } else {
         await LoadScreen();
         showNotif("Username atau password salah!", "error");
